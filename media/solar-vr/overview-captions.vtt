@@ -1,0 +1,51 @@
+WEBVTT
+
+title
+00:00:00.250 --> 00:00:03.600
+Rooftop Solar Connection Simulator
+VR training · Unity · archival headset gameplay capture
+
+1
+00:00:03.700 --> 00:00:10.350
+A narrated welcome and a mission briefing open the session.
+
+2
+00:00:10.550 --> 00:00:13.750 line:8%
+Narrated steps guide the learner, starting with personal protective equipment.
+
+3
+00:00:13.950 --> 00:00:21.250 line:8%
+Point, hold and place each PPE item onto the body.
+
+4
+00:00:21.450 --> 00:00:27.250
+On the rooftop, the three panels are tested one by one.
+
+5
+00:00:27.450 --> 00:00:35.450
+Tool tasks: a clamp meter measures each panel's current.
+
+6
+00:00:35.650 --> 00:00:43.250
+Wiring: positive cables to the female Y connector, negative to the male.
+
+7
+00:00:43.450 --> 00:00:47.150
+Rooftop wiring complete; the task tablet then leads the learner downstairs.
+
+8
+00:00:47.350 --> 00:00:54.950
+Downstairs: the PCU and two batteries. Each battery is tested first.
+
+9
+00:00:55.150 --> 00:01:09.450 line:8%
+Multimeter checks, then a loop cable joins the 12 V batteries in series for 24 V.
+
+10
+00:01:09.650 --> 00:01:17.950 line:8%
+This run shows the failure branch: the battery is wired with the wrong polarity.
+
+11
+00:01:18.150 --> 00:01:26.650
+The virtual PCU is destroyed and the learner is told to repeat the step.
+

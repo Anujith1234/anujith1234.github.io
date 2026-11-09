@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bar Bending Simulator · Anujith A</title>
+<meta name="description" content="A training simulator driven by a physical rod-and-lever rig, which I upgraded and maintained.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Anujith A">
+<meta property="og:title" content="Bar Bending Simulator · Anujith A">
+<meta property="og:description" content="A training simulator driven by a physical rod-and-lever rig, which I upgraded and maintained.">
+<link rel="canonical" href="https://anujith1234.github.io/work/bar-bending/">
+<meta property="og:url" content="https://anujith1234.github.io/work/bar-bending/">
+<meta property="og:image" content="https://anujith1234.github.io/media/bar-bending/poster-1280.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f3f0e8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#131210" media="(prefers-color-scheme: dark)">
+<link rel="preload" href="../../static/fonts/source-sans-3-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../static/fonts/bricolage-grotesque-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../static/css/site.css">
+<link rel="icon" href="../../static/favicon.svg" type="image/svg+xml">
+<script>document.documentElement.classList.add('js');</script>
+<script src="../../static/js/site.js" defer></script>
+</head>
+<body class="page-work">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header" data-header>
+  <div class="wrap header-inner">
+    <a class="wordmark" href="../../index.html" aria-label="Anujith A, home">
+      <span class="wordmark-name">Anujith A</span>
+      <span class="wordmark-role">Game designer and developer</span>
+    </a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>
+      <span class="menu-toggle-bars" aria-hidden="true"></span><span class="menu-toggle-label">Menu</span>
+    </button>
+    <nav class="site-nav" id="site-nav" aria-label="Main" data-menu>
+      <ul>
+        <li><a href="../../index.html#work" aria-current="page">Work</a></li>
+        <li><a href="../../index.html#about">About</a></li>
+        <li><a href="../../programming/index.html">Programming</a></li>
+        <li><a href="../../design/index.html">Design</a></li>
+        <li><a href="../../index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main" tabindex="-1">
+<article class="case" aria-labelledby="case-title">
+  <header class="case-head wrap">
+    <p class="crumbs"><a href="../../index.html#work">Work</a> <span aria-hidden="true">/</span> <span>Bar Bending Simulator</span></p>
+    <h1 id="case-title" class="case-title">Bar Bending Simulator</h1>
+    <p class="case-tagline">A training simulator driven by a physical rod-and-lever rig, which I upgraded and maintained.</p>
+  </header>
+
+  <div class="wrap case-media">
+    <figure class="video-figure">
+      <div class="video-frame">
+        <video controls playsinline preload="none" poster="../../media/bar-bending/poster-1280.webp"
+               width="1920" height="1080" aria-describedby="video-desc"
+               style="view-transition-name: cover-bar-bending">
+<source src="../../media/video/bar-bending-overview-1080p.mp4" type="video/mp4" media="(min-width: 900px)">          <source src="../../media/video/bar-bending-overview-720p.mp4" type="video/mp4">
+          <track kind="captions" srclang="en" label="English captions" src="../../media/bar-bending/overview-captions.vtt" default>
+          <p>Your browser can't play this video. The description below explains what it shows.</p>
+        </video>
+      </div>
+      <figcaption>
+        <span class="meta">Overview video</span>
+        Archival on-site photos and phone video of the rig (the person shown is another demonstrator, not me), followed by the current software recorded in the Unity Editor without the rig. The video is silent. Captions are on by default.        <details class="video-desc">
+          <summary>What the video shows</summary>
+          <p id="video-desc">62-second silent overview: photos of the bar-bending rig and touchscreen, phone footage of the rod being worked with the on-screen bend guide and live angle, a return-to-zero counter and a results table of expected versus achieved angles; then the current software&#39;s credits, shape, diameter and grade selection, reports with graphs (personal details blurred), a trainee-versus-expert comparison and the Editor simulation waiting for rod input.</p>
+        </details>
+      </figcaption>
+    </figure>
+  </div>
+
+  <div class="wrap">
+    <dl class="facts">
+      <div><dt>My role</dt><dd>Developer, one of two on the modernization. Engine upgrade, maintenance, debugging and rig support for an inherited simulator.</dd></div>
+      <div><dt>Team</dt><dd>2 developers (including me) on the 2026 modernization</dd></div>
+      <div><dt>Organisation</dt><dd>AMMACHI Labs, Amrita Vishwa Vidyapeetham</dd></div>
+<div><dt>My work</dt><dd>2026</dd></div>      <div><dt>Status</dt><dd>Maintained. The simulator has been installed at L&amp;T Construction Skills Training Institutes since its original release.</dd></div>
+<div><dt>Context</dt><dd>Originally developed by AMMACHI Labs in 2014–2016 with input from L&amp;T&#39;s Construction Skills Training Institute. <a href="https://ammachilabs.org/bar-bending-simulator-for-lt/" rel="noopener">AMMACHI Labs project page</a></dd></div>      <div><dt>Engine</dt><dd>Unity (legacy Unity 5-era project, maintained on 2019 LTS; upgrade path explored to Unity 6) · C#</dd></div>
+      <div><dt>Platform</dt><dd>Windows touchscreen kiosk connected to a PLC-driven bending rig</dd></div>
+      <div><dt>Built with</dt><dd><ul class="tags"><li>Named-pipe link to an OPC/PLC client</li><li>Procedural mesh bending</li><li>SQLite</li><li>PDF reports</li><li>Graph reports</li></ul></dd></div>
+    </dl>
+  </div>
+
+  <div class="wrap">
+    <details class="toc-mobile">
+      <summary>On this page</summary>
+      <ol>
+<li><a href="#the-experience">The experience</a></li><li><a href="#my-work">My work</a></li><li><a href="#how-it-works">How it works</a></li><li><a href="#decisions-that-shaped-it">Decisions that shaped it</a></li><li><a href="#next-steps">Next steps</a></li><li><a href="#gallery">Screens</a></li>      </ol>
+    </details>
+  </div>
+
+  <div class="wrap case-layout">
+    <aside class="case-aside">
+      <nav class="toc" aria-label="On this page">
+        <p class="meta">On this page</p>
+        <ol>
+<li><a href="#the-experience">The experience</a></li><li><a href="#my-work">My work</a></li><li><a href="#how-it-works">How it works</a></li><li><a href="#decisions-that-shaped-it">Decisions that shaped it</a></li><li><a href="#next-steps">Next steps</a></li><li><a href="#gallery">Screens</a></li>        </ol>
+      </nav>
+    </aside>
+
+    <div class="prose">
+      <h2 id="the-experience">The experience</h2>
+<p>Bending reinforcement bars into stirrups and links is a basic construction skill, and getting the angles and lengths wrong wastes steel. The simulator lets a trainee practise on a <strong>physical rig</strong>: a rod that slides through a bending table and a lever that bends it, connected to a touchscreen running the simulation.</p>
+<p>A trainee logs in, chooses a shape (square, rectangle, triangle, diamond, hexagon, circle or crank), a bar diameter and a steel grade, and resets the rod to its start position. The screen then guides each bend: move the bar to the marked point, bend to the target angle while the live angle and a colour cue show progress, confirm the bend on the rig, and rotate the lever back to zero before the next one. At the end, a results table compares the expected and achieved angle for every bend. Instructors manage batches and trainees and look at reports: per-shape assessment sheets, time and accuracy graphs across trials, and a trainee's bend compared with an expert's.</p>
+<h2 id="my-work">My work</h2>
+<p>The simulator was originally developed by AMMACHI Labs in 2014–2016 for L&amp;T's construction skills training, well before I joined. In 2026 I took it over as a Unity 5-era project, working with one other developer, to bring it up to date and keep it running. My work was <strong>upgrading, maintaining and debugging it</strong>. I moved the project onto newer Unity versions, then fixed and extended it across the hardware link, the simulation flow, the database and the reports. I also took part in hardware fixes on the rigs.</p>
+<p>The upgrade went through Unity 2018 to a maintained 2019 LTS line, where day-to-day fixes now happen. Upgrades to 2020, 2022 and Unity 6 were explored on a separate branch so the working line was never put at risk. My work on the maintained line includes:</p>
+<ul>
+<li>a rewritten pipe server, with diagnostic logging of the raw values coming from the rig's controller (release logging is opt-in);</li>
+<li>fixes to shape results and bar rotation for several shapes;</li>
+<li>database and report paths moved to locations that work in installed builds;</li>
+<li>detection of the rod's linear movement;</li>
+<li>over-extension warnings and an explicit confirmation step in the bend flow.</li>
+</ul>
+<p>The procedural bending, evaluation tables and reporting described below predate me. My part is keeping them working, correct and maintainable on current tools.</p>
+<h2 id="how-it-works">How it works</h2>
+<figure class="diagram">
+<ol class="flow">
+<li><strong>Rig</strong><span>Rod position and lever angle are read by the rig's PLC.</span></li>
+<li><strong>Controller client</strong><span>An OPC client exchanges values with the PLC.</span></li>
+<li><strong>Named pipes</strong><span>Two pipes: one streams rod position, angle and stop flags into Unity; the other tells the rig which diameter and grade were chosen.</span></li>
+<li><strong>Simulation</strong><span>Moves and bends a procedural bar, guides the trainee and evaluates each bend.</span></li>
+<li><strong>Records</strong><span>Trials and angle time series go to SQLite; reports and PDFs read them back.</span></li>
+</ol>
+<figcaption>Data path from the rig to the reports, simplified. Diagram drawn for this page.</figcaption>
+</figure>
+
+<p><strong>Talking to the rig.</strong> On start-up the simulator opens two named pipes. The inbound pipe receives short text packets with the rod's linear position, the lever angle and stop flags; the outbound pipe sends a code for the selected bar diameter and grade every 50 ms, but only when it changes. The external OPC client bridges these values to the PLC on the rig.</p>
+<p><strong>A bar built in code.</strong> The bar is a procedural mesh: an 18-sided tube along a skeleton of points. The rod's position slides the bar through the bending table. When the lever moves past the pivot, a bend is inserted into the skeleton and new rings are added along an arc every 18° of lever travel. Bends only accumulate forward, so the return stroke never "unbends" the bar, and the trainee must bring the lever back to zero before the next bend.</p>
+<p><strong>Checking each bend.</strong> Every shape defines its bends, target angles, marker positions and colour thresholds. When a shape is finished, each side and hook is looked up from the angle the lever reached for that bend and compared with the reference length; a bend passes if it is within ±5 mm. The result, the angles and a time series of the bend are stored per trial.</p>
+<p><strong>Reports.</strong> Per-shape assessment sheets are rendered to PDF; summary and learning-pattern graphs show time taken and bend accuracy over trials; a comparison view plots a trainee's bend angle against an expert trial.</p>
+<h2 id="decisions-that-shaped-it">Decisions that shaped it</h2>
+<p><strong>Keep a working line while exploring the upgrade.</strong> The rig has to keep working at training sites, so fixes go into a stable 2019 LTS line while newer engine versions are explored separately. The two histories are kept apart rather than mixed.</p>
+<p><strong>Make the hardware link observable.</strong> Most field problems look the same from the screen: the bar doesn't move as expected. Logging the raw values coming from the controller, with the logging switchable in release builds, turns "it doesn't work" into something that can be diagnosed.</p>
+<p><strong>Guard the physical flow.</strong> Over-extension warnings and an explicit return-to-zero step protect the sequence from a rod or lever left in the wrong place, which a screen-only game never has to deal with.</p>
+<h2 id="next-steps">Next steps</h2>
+<ul>
+<li><strong>Validate the current build on a rig.</strong> The archival footage shows the rig with an earlier setup, and the Editor segment shows the current software waiting for rod input without hardware. Run a full session on a rig with the current build.</li>
+<li><strong>Harden data access.</strong> Replace the legacy string-built SQL with parameterised queries and the stored passwords with hashed credentials.</li>
+<li><strong>Restructure for testing.</strong> Extract shape definitions into data and the pipe parsing into its own tested class, breaking up the large simulation controller.</li>
+<li><strong>Check the evaluation tables.</strong> Review the remaining angle ranges and report labels against the instructors' reference standards.</li>
+</ul>
+
+      <section class="gallery" aria-labelledby="gallery">
+        <h2 id="gallery">Screens</h2>
+        <ul class="gallery-grid">
+          <li>
+            <figure>
+              <a class="gallery-link" href="../../media/bar-bending/still-01-rig-1600.webp" data-lightbox data-caption="Archival photo of the bar-bending training rig." data-alt="A white bar-bending training rig with a mounted touchscreen, standing beside an information poster in a training room.">
+                <img src="../../media/bar-bending/still-01-rig-800.webp"
+     srcset="../../media/bar-bending/still-01-rig-800.webp 800w, ../../media/bar-bending/still-01-rig-1600.webp 1600w"
+     sizes="(min-width: 1100px) 360px, (min-width: 700px) 45vw, 100vw" width="1600" height="900" alt="A white bar-bending training rig with a mounted touchscreen, standing beside an information poster in a training room."
+loading="lazy" decoding="async">
+              </a>
+              <figcaption>Archival photo of the bar-bending training rig.</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <a class="gallery-link" href="../../media/bar-bending/still-02-rig-in-use-1600.webp" data-lightbox data-caption="Archival photo of the rig in use (demonstrator shown is not the developer)." data-alt="A person in a hard hat and high-visibility vest operates the rig while the touchscreen shows the simulation.">
+                <img src="../../media/bar-bending/still-02-rig-in-use-800.webp"
+     srcset="../../media/bar-bending/still-02-rig-in-use-800.webp 800w, ../../media/bar-bending/still-02-rig-in-use-1600.webp 1600w"
+     sizes="(min-width: 1100px) 360px, (min-width: 700px) 45vw, 100vw" width="1600" height="900" alt="A person in a hard hat and high-visibility vest operates the rig while the touchscreen shows the simulation."
+loading="lazy" decoding="async">
+              </a>
+              <figcaption>Archival photo of the rig in use (demonstrator shown is not the developer).</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <a class="gallery-link" href="../../media/bar-bending/still-03-rod-handling-1600.webp" data-lightbox data-caption="Archival photo: working the physical rod on the rig." data-alt="Side view of a person in safety gear holding the rig&#39;s metal rod beside the tilted touchscreen.">
+                <img src="../../media/bar-bending/still-03-rod-handling-800.webp"
+     srcset="../../media/bar-bending/still-03-rod-handling-800.webp 800w, ../../media/bar-bending/still-03-rod-handling-1600.webp 1600w"
+     sizes="(min-width: 1100px) 360px, (min-width: 700px) 45vw, 100vw" width="1600" height="900" alt="Side view of a person in safety gear holding the rig&#39;s metal rod beside the tilted touchscreen."
+loading="lazy" decoding="async">
+              </a>
+              <figcaption>Archival photo: working the physical rod on the rig.</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <a class="gallery-link" href="../../media/bar-bending/still-04-live-bend-angle-1600.webp" data-lightbox data-caption="Archival on-site video frame: the bend guide with the live angle indicator." data-alt="Photo of a monitor showing a top-down bend guide with a green arc indicator, a &#39;Bend the bar 90 degrees&#39; instruction and a prompt to press a button on the device.">
+                <img src="../../media/bar-bending/still-04-live-bend-angle-800.webp"
+     srcset="../../media/bar-bending/still-04-live-bend-angle-800.webp 800w, ../../media/bar-bending/still-04-live-bend-angle-1600.webp 1600w"
+     sizes="(min-width: 1100px) 360px, (min-width: 700px) 45vw, 100vw" width="1600" height="900" alt="Photo of a monitor showing a top-down bend guide with a green arc indicator, a &#39;Bend the bar 90 degrees&#39; instruction and a prompt to press a button on the device."
+loading="lazy" decoding="async">
+              </a>
+              <figcaption>Archival on-site video frame: the bend guide with the live angle indicator.</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <a class="gallery-link" href="../../media/bar-bending/still-05-practice-report-1600.webp" data-lightbox data-caption="Practice summary report with time and accuracy graphs (personal details blurred)." data-alt="Report screen with a practice summary of trials per shape and two line graphs of time taken and bend accuracy across trials; user details are blurred.">
+                <img src="../../media/bar-bending/still-05-practice-report-800.webp"
+     srcset="../../media/bar-bending/still-05-practice-report-800.webp 800w, ../../media/bar-bending/still-05-practice-report-1600.webp 1600w"
+     sizes="(min-width: 1100px) 360px, (min-width: 700px) 45vw, 100vw" width="1600" height="900" alt="Report screen with a practice summary of trials per shape and two line graphs of time taken and bend accuracy across trials; user details are blurred."
+loading="lazy" decoding="async">
+              </a>
+              <figcaption>Practice summary report with time and accuracy graphs (personal details blurred).</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <a class="gallery-link" href="../../media/bar-bending/still-06-editor-preview-1600.webp" data-lightbox data-caption="Editor preview without the rig: the simulation waiting for rod input." data-alt="3D bending table with a rebar, a yellow arrow, a gloved hand marker, the instruction &#39;Move the bar to the first point&#39; and &#39;Bend Angle: 5&#39;.">
+                <img src="../../media/bar-bending/still-06-editor-preview-800.webp"
+     srcset="../../media/bar-bending/still-06-editor-preview-800.webp 800w, ../../media/bar-bending/still-06-editor-preview-1600.webp 1600w"
+     sizes="(min-width: 1100px) 360px, (min-width: 700px) 45vw, 100vw" width="1600" height="900" alt="3D bending table with a rebar, a yellow arrow, a gloved hand marker, the instruction &#39;Move the bar to the first point&#39; and &#39;Bend Angle: 5&#39;."
+loading="lazy" decoding="async">
+              </a>
+              <figcaption>Editor preview without the rig: the simulation waiting for rod input.</figcaption>
+            </figure>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <nav class="wrap pager" aria-label="More projects">
+<a class="pager-link" href="../../work/cpr-third-person-simulation/index.html"><span class="meta">Previous</span>CPR Training Simulation</a>    <a class="pager-link pager-link--next" href="../../work/madan-the-hope/index.html"><span class="meta">Next</span>Madan: The Hope</a>
+  </nav>
+</article>
+
+<dialog class="lightbox" data-lightbox-dialog aria-label="Enlarged screenshot">
+  <form method="dialog"><button class="lightbox-close" type="submit" aria-label="Close">Close</button></form>
+  <figure><figcaption></figcaption></figure>
+</dialog>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p>© 2026 Anujith A. Project footage and screenshots are from the projects described; team and institutional credits are listed on each page.</p>
+    <p><a href="#main" class="to-top">Back to top</a></p>
+  </div>
+</footer>
+</body>
+</html>

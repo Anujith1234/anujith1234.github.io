@@ -1,0 +1,67 @@
+WEBVTT
+
+title
+00:00:00.250 --> 00:00:03.600
+CPR Training Simulation
+Third-person training simulation · Unity · Editor gameplay capture
+
+1
+00:00:00.200 --> 00:00:03.300
+The app opens with a disclaimer: a training tool, not a substitute for certified hands-on training.
+
+2
+00:00:03.450 --> 00:00:06.150
+Three modes: guided step-by-step support, independent assessment and compression practice.
+
+3
+00:00:06.350 --> 00:00:09.550
+Scenario: an adult has collapsed inside a restaurant.
+
+4
+00:00:09.750 --> 00:00:15.950
+Guided mode: narration and on-screen steps lead the learner through the response.
+
+5
+00:00:16.150 --> 00:00:19.550
+Checking for a response by tapping the shoulder.
+
+6
+00:00:19.750 --> 00:00:30.150
+Calling the emergency number (112) on the in-game phone.
+
+7
+00:00:30.350 --> 00:00:39.950 line:8%
+Live rate feedback: 'Too slow' until the pace reaches 100–120 per minute.
+
+8
+00:00:40.150 --> 00:00:49.800
+AED: switch it on, then drag each pad onto the chest.
+
+9
+00:00:50.000 --> 00:00:53.550 line:8%
+A misplaced pad triggers a corrective hint.
+
+10
+00:00:53.750 --> 00:01:05.450 line:8%
+Rhythm analysis, shock advised, shock delivered, compressions resume.
+
+11
+00:01:05.650 --> 00:01:09.550
+End of the guided run: rhythm-accuracy summary.
+
+12
+00:01:09.750 --> 00:01:12.650
+Compression Practice reports its own per-session results.
+
+13
+00:01:12.850 --> 00:01:15.650
+Assessment mode: the same scenario without step-by-step guidance.
+
+14
+00:01:15.850 --> 00:01:20.650
+Actions are recorded for review at the end.
+
+15
+00:01:20.850 --> 00:01:29.250
+Assessment debrief: 70/100 ('Needs improvement') with domain scores and priority feedback.
+

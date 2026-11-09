@@ -1,0 +1,27 @@
+WEBVTT
+
+title
+00:00:00.250 --> 00:00:03.600
+Madan: The Hope
+Vehicle-interaction prototype · Unreal Engine 5 · Editor test-map capture
+
+1
+00:00:03.800 --> 00:00:07.450
+Looking at an interactable highlights it and shows its prompt.
+
+2
+00:00:07.650 --> 00:00:11.450
+Objects can be picked up, carried and dropped.
+
+3
+00:00:11.650 --> 00:00:17.450
+The bus cabin is walkable.
+
+4
+00:00:17.650 --> 00:00:21.550
+The driver's-door interaction switches the player into the bus.
+
+5
+00:00:21.750 --> 00:00:40.950
+Driving and turning, captured on a checkerboard test map.
+
