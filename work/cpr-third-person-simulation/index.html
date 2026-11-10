@@ -68,7 +68,7 @@
       </div>
       <figcaption>
         <span class="meta">Overview video</span>
-        Unity Editor capture: a guided run, compression practice and an assessment run with its real score. Captions are on by default.        <details class="video-desc">
+        Guided training, compression practice and an assessment run with its scored debrief. Captions are on by default.        <details class="video-desc">
           <summary>What the video shows</summary>
           <p id="video-desc">89-second overview: a disclaimer and mode selection, a restaurant scenario, checking the patient, calling 112 on an in-game phone, chest compressions with live rate feedback, attaching AED pads with a corrective hint, a shock, the guided and practice summaries, and an assessment debrief scored 70/100, &#39;Needs improvement&#39;.</p>
         </details>
@@ -78,11 +78,10 @@
 
   <div class="wrap">
     <dl class="facts">
-      <div><dt>My role</dt><dd>Developer, one of two. I built most of the simulation, from the interactive scenario to its feedback and scoring.</dd></div>
+      <div><dt>My role</dt><dd>Developer: scenario and interactions, event-log assessment and debrief, WebGL editions and SCORM reporting.</dd></div>
       <div><dt>Team</dt><dd>2 developers (including me)</dd></div>
       <div><dt>Organisation</dt><dd>AMMACHI Labs, Amrita Vishwa Vidyapeetham</dd></div>
-<div><dt>Year</dt><dd>2026</dd></div>      <div><dt>Status</dt><dd>Feature-complete; final polish in progress</dd></div>
-<div><dt>Context</dt><dd>Built for the Amrita Institute of Medical Sciences, Kochi, as a course on Amrita&#39;s AMPLE learning platform.</dd></div>      <div><dt>Engine</dt><dd>Unity 6 (URP) · C#</dd></div>
+<div><dt>Year</dt><dd>2026</dd></div><div><dt>Status</dt><dd>Feature-complete; final polish in progress</dd></div><div><dt>Context</dt><dd>Built for the Amrita Institute of Medical Sciences, Kochi, as a course on Amrita&#39;s AMPLE learning platform.</dd></div>      <div><dt>Engine</dt><dd>Unity 6 (URP) · C#</dd></div>
       <div><dt>Platform</dt><dd>Web (WebGL), mouse, keyboard and touch; SCORM 2004 package for learning platforms</dd></div>
       <div><dt>Built with</dt><dd><ul class="tags"><li>WebGL editions</li><li>SCORM 2004 bridge</li><li>Event-log scoring</li><li>EditMode and PlayMode tests</li><li>Touch and keyboard input</li></ul></dd></div>
     </dl>
@@ -92,7 +91,7 @@
     <details class="toc-mobile">
       <summary>On this page</summary>
       <ol>
-<li><a href="#the-experience">The experience</a></li><li><a href="#my-work">My work</a></li><li><a href="#how-it-works">How it works</a></li><li><a href="#decisions-that-shaped-it">Decisions that shaped it</a></li><li><a href="#next-steps">Next steps</a></li><li><a href="#gallery">Screens</a></li>      </ol>
+<li><a href="#the-experience">The experience</a></li><li><a href="#my-work">My work</a></li><li><a href="#how-it-works">How it works</a></li><li><a href="#decisions-that-shaped-it">Decisions that shaped it</a></li><li><a href="#gallery">Screens</a></li>      </ol>
     </details>
   </div>
 
@@ -101,7 +100,7 @@
       <nav class="toc" aria-label="On this page">
         <p class="meta">On this page</p>
         <ol>
-<li><a href="#the-experience">The experience</a></li><li><a href="#my-work">My work</a></li><li><a href="#how-it-works">How it works</a></li><li><a href="#decisions-that-shaped-it">Decisions that shaped it</a></li><li><a href="#next-steps">Next steps</a></li><li><a href="#gallery">Screens</a></li>        </ol>
+<li><a href="#the-experience">The experience</a></li><li><a href="#my-work">My work</a></li><li><a href="#how-it-works">How it works</a></li><li><a href="#decisions-that-shaped-it">Decisions that shaped it</a></li><li><a href="#gallery">Screens</a></li>        </ol>
       </nav>
     </aside>
 
@@ -116,7 +115,7 @@
 </ul>
 <p>The video keeps the real results: the guided run reached 31 of 60 compressions in the target range, and the assessment scored 70 out of 100, rated "Needs improvement". The app opens with a disclaimer that it is a training tool, not a substitute for certified hands-on training.</p>
 <h2 id="my-work">My work</h2>
-<p>I'm one of the two developers on the CPR simulation at AMMACHI Labs, and I built most of it. On the scenario side that covers the session flow and three modes, third-person movement and camera staging, the patient assessment, compression and rescue-breath interactions, the in-game emergency call and the AED sequence. On the evidence side it covers the event log, guided progression, the 100-point debrief and practice coaching, along with the WebGL edition builds and the SCORM bridge.</p>
+<p>I develop the CPR simulation at AMMACHI Labs with a second developer. On the scenario side my work covers the session flow and three modes, third-person movement and camera staging, the patient assessment, compression and rescue-breath interactions, the in-game emergency call and the AED sequence. On the evidence side I built the event-driven assessment and debrief system (the event log, guided progression, the 100-point debrief and practice coaching), the WebGL edition builds, and SCORM 2004 reporting for completion and compression-rhythm performance.</p>
 <p>A large part of the work is iteration on correctness rather than new screens. Each action needs to be recorded exactly once. A pause or a rescue breath must not distort the measured compression rate. The guided route should block the wrong task without hiding a meaningful mistake. And the debrief has to explain where every point came from. The project's EditMode and PlayMode tests sit alongside that work, and most of the scoring logic can be checked without loading the scene.</p>
 <h2 id="how-it-works">How it works</h2>
 <figure class="diagram">
@@ -132,20 +131,14 @@
 <p><strong>One record of what happened.</strong> Each system that owns a clinical action (the assessment checks, the CPR sequence, compressions, breaths, the phone call and the AED) writes an event when something happens, with details such as compression rate, which hand position was chosen, or whether the airway was open before a breath. Animation, camera, audio and NPCs observe gameplay but never write evidence, so the score can't depend on presentation.</p>
 <p><strong>Guidance as a reader.</strong> Guided mode polls the log for new events and advances an ordered list of steps. It never records events itself and never touches gameplay, so switching guidance off leaves the simulation intact. A gate in front of interactions decides whether an action belongs to the current step; if the gate is missing or fails, the scenario degrades to ungated rather than getting stuck.</p>
 <p><strong>Compression feedback.</strong> A compression is counted on release. The rate comes from a rolling window of the last five intervals: below 100 per minute is "too slow", 100–120 is "in range", above 120 is "too fast". The window resets when the learner moves to breaths or pauses, so a deliberate break never reads as a slow compression. Depth and recoil are not measured, and the debrief says so.</p>
-<p><strong>A debrief built from facts.</strong> At the end of an assessment, a pure, deterministic pipeline extracts facts from the log, identifies the most important issues, scores a 100-point restaurant rubric (scene survey, responsiveness, breathing and pulse, the emergency call, starting CPR, hand position, rhythm, continuity, airway, breath timing, 30:2 cycles and each AED step) and builds the report the learner sees. The top three priority issues are shown first. A "Strong" rating requires the whole sequence in a safe order; anything less with compressions is "Needs improvement".</p>
-<p><strong>Editions and delivery.</strong> The project builds three WebGL editions (guided, assessment and all modes) from build profiles. A build script checks that the compiled edition marker matches the profile before accepting the build. A SCORM 2004 bridge reports completion and a score to a learning platform.</p>
+<p><strong>A debrief built from facts.</strong> At the end of an assessment, a pure, deterministic pipeline extracts facts from the log, identifies the most important issues, scores a 100-point assessment rubric (scene survey, responsiveness, breathing and pulse, the emergency call, starting CPR, hand position, rhythm, continuity, airway, breath timing, 30:2 cycles and each AED step) and builds the report the learner sees. The top three priority issues are shown first. A "Strong" rating requires the whole sequence in a safe order; anything less with compressions is "Needs improvement".</p>
+<p><strong>Editions and delivery.</strong> The project builds three WebGL editions (guided, assessment and all modes) from build profiles. A build script checks that the compiled edition marker matches the profile before accepting the build. A SCORM 2004 bridge reports completion and compression-rhythm performance to the learning platform.</p>
 <p><strong>Tests.</strong> The project defines about 750 EditMode tests and 190 PlayMode tests. Because the scoring and fact-extraction code is pure, most rubric behaviour can be checked without loading the scene.</p>
 <h2 id="decisions-that-shaped-it">Decisions that shaped it</h2>
 <p><strong>Separate evidence from presentation.</strong> Recording facts in one log and keeping every feedback system read-only means a new kind of feedback, or a new rubric, is a new reader rather than a change to gameplay code.</p>
 <p><strong>Block the wrong task, not the wrong attempt.</strong> Guided mode stops a learner jumping ahead, but lets them place a pad badly and then corrects them. That keeps the learning in the action rather than in a disabled button.</p>
 <p><strong>Timed assessment that always runs to the end.</strong> In assessment, the learner keeps cycling 30:2 until the clock runs out, as they would until help arrives. It makes the session length predictable and keeps "finishing early" from becoming a goal in itself.</p>
-<h2 id="next-steps">Next steps</h2>
-<ul>
-<li><strong>Keep the scope clear.</strong> The simulation is a training tool and says so on its opening screen. The guided route follows the scenario design and makes no claim of clinical certification.</li>
-<li><strong>Add a no-shock branch.</strong> The current scenario covers the shock-advised AED path; a no-shock scenario is the natural next one.</li>
-<li><strong>Report the debrief score to the learning platform.</strong> The SCORM report currently sends compression-rhythm accuracy rather than the 100-point debrief score the learner sees. Send the debrief score and confirm how AMPLE records it before relying on the platform's pass/fail.</li>
-<li><strong>Add automated runs of the existing EditMode and PlayMode suites</strong> on every change.</li>
-</ul>
+<div id="next-steps"></div>
 
       <section class="gallery" aria-labelledby="gallery">
         <h2 id="gallery">Screens</h2>

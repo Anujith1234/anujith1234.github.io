@@ -68,9 +68,9 @@
       </div>
       <figcaption>
         <span class="meta">Overview video</span>
-        Archival on-site photos and phone video of the rig (the person shown is another demonstrator, not me), followed by the current software recorded in the Unity Editor without the rig. The video is silent. Captions are on by default.        <details class="video-desc">
+        An earlier on-site demonstration of the physical training rig, followed by a walkthrough of the current simulator interface and reporting tools. The video is silent. Captions are on by default.        <details class="video-desc">
           <summary>What the video shows</summary>
-          <p id="video-desc">62-second silent overview: photos of the bar-bending rig and touchscreen, phone footage of the rod being worked with the on-screen bend guide and live angle, a return-to-zero counter and a results table of expected versus achieved angles; then the current software&#39;s credits, shape, diameter and grade selection, reports with graphs (personal details blurred), a trainee-versus-expert comparison and the Editor simulation waiting for rod input.</p>
+          <p id="video-desc">62-second silent overview: photos of the bar-bending rig and touchscreen, phone footage of the rod being worked with the on-screen bend guide and live angle, a return-to-zero counter and a results table of expected versus achieved angles; then the current software&#39;s credits, shape, diameter and grade selection, reports with graphs (personal details blurred), a trainee-versus-expert comparison and the simulation waiting for rod input.</p>
         </details>
       </figcaption>
     </figure>
@@ -78,11 +78,10 @@
 
   <div class="wrap">
     <dl class="facts">
-      <div><dt>My role</dt><dd>Developer, one of two on the modernization. Engine upgrade, maintenance, debugging and rig support for an inherited simulator.</dd></div>
+      <div><dt>My role</dt><dd>Developer on the 2026 modernization: engine upgrade, maintenance, debugging and rig support for an inherited simulator.</dd></div>
       <div><dt>Team</dt><dd>2 developers (including me) on the 2026 modernization</dd></div>
       <div><dt>Organisation</dt><dd>AMMACHI Labs, Amrita Vishwa Vidyapeetham</dd></div>
-<div><dt>My work</dt><dd>2026</dd></div>      <div><dt>Status</dt><dd>Maintained. The simulator has been installed at L&amp;T Construction Skills Training Institutes since its original release.</dd></div>
-<div><dt>Context</dt><dd>Originally developed by AMMACHI Labs in 2014–2016 with input from L&amp;T&#39;s Construction Skills Training Institute. <a href="https://ammachilabs.org/bar-bending-simulator-for-lt/" rel="noopener">AMMACHI Labs project page</a></dd></div>      <div><dt>Engine</dt><dd>Unity (legacy Unity 5-era project, maintained on 2019 LTS; upgrade path explored to Unity 6) · C#</dd></div>
+<div><dt>My work</dt><dd>2026</dd></div><div><dt>Status</dt><dd>Maintained. The simulator has been installed at L&amp;T Construction Skills Training Institutes since its original release.</dd></div><div><dt>Context</dt><dd>Originally developed by AMMACHI Labs in 2014–2016 with input from L&amp;T&#39;s Construction Skills Training Institute. <a href="https://ammachilabs.org/bar-bending-simulator-for-lt/" rel="noopener">AMMACHI Labs project page</a></dd></div>      <div><dt>Engine</dt><dd>Unity (legacy Unity 5-era project, maintained on 2019 LTS; upgrade path explored to Unity 6) · C#</dd></div>
       <div><dt>Platform</dt><dd>Windows touchscreen kiosk connected to a PLC-driven bending rig</dd></div>
       <div><dt>Built with</dt><dd><ul class="tags"><li>Named-pipe link to an OPC/PLC client</li><li>Procedural mesh bending</li><li>SQLite</li><li>PDF reports</li><li>Graph reports</li></ul></dd></div>
     </dl>
@@ -92,7 +91,7 @@
     <details class="toc-mobile">
       <summary>On this page</summary>
       <ol>
-<li><a href="#the-experience">The experience</a></li><li><a href="#my-work">My work</a></li><li><a href="#how-it-works">How it works</a></li><li><a href="#decisions-that-shaped-it">Decisions that shaped it</a></li><li><a href="#next-steps">Next steps</a></li><li><a href="#gallery">Screens</a></li>      </ol>
+<li><a href="#the-experience">The experience</a></li><li><a href="#my-work">My work</a></li><li><a href="#how-it-works">How it works</a></li><li><a href="#decisions-that-shaped-it">Decisions that shaped it</a></li><li><a href="#gallery">Screens</a></li>      </ol>
     </details>
   </div>
 
@@ -101,7 +100,7 @@
       <nav class="toc" aria-label="On this page">
         <p class="meta">On this page</p>
         <ol>
-<li><a href="#the-experience">The experience</a></li><li><a href="#my-work">My work</a></li><li><a href="#how-it-works">How it works</a></li><li><a href="#decisions-that-shaped-it">Decisions that shaped it</a></li><li><a href="#next-steps">Next steps</a></li><li><a href="#gallery">Screens</a></li>        </ol>
+<li><a href="#the-experience">The experience</a></li><li><a href="#my-work">My work</a></li><li><a href="#how-it-works">How it works</a></li><li><a href="#decisions-that-shaped-it">Decisions that shaped it</a></li><li><a href="#gallery">Screens</a></li>        </ol>
       </nav>
     </aside>
 
@@ -140,59 +139,53 @@
 <p><strong>Keep a working line while exploring the upgrade.</strong> The rig has to keep working at training sites, so fixes go into a stable 2019 LTS line while newer engine versions are explored separately. The two histories are kept apart rather than mixed.</p>
 <p><strong>Make the hardware link observable.</strong> Most field problems look the same from the screen: the bar doesn't move as expected. Logging the raw values coming from the controller, with the logging switchable in release builds, turns "it doesn't work" into something that can be diagnosed.</p>
 <p><strong>Guard the physical flow.</strong> Over-extension warnings and an explicit return-to-zero step protect the sequence from a rod or lever left in the wrong place, which a screen-only game never has to deal with.</p>
-<h2 id="next-steps">Next steps</h2>
-<ul>
-<li><strong>Validate the current build on a rig.</strong> The archival footage shows the rig with an earlier setup, and the Editor segment shows the current software waiting for rod input without hardware. Run a full session on a rig with the current build.</li>
-<li><strong>Harden data access.</strong> Replace the legacy string-built SQL with parameterised queries and the stored passwords with hashed credentials.</li>
-<li><strong>Restructure for testing.</strong> Extract shape definitions into data and the pipe parsing into its own tested class, breaking up the large simulation controller.</li>
-<li><strong>Check the evaluation tables.</strong> Review the remaining angle ranges and report labels against the instructors' reference standards.</li>
-</ul>
+<div id="next-steps"></div>
 
       <section class="gallery" aria-labelledby="gallery">
         <h2 id="gallery">Screens</h2>
         <ul class="gallery-grid">
           <li>
             <figure>
-              <a class="gallery-link" href="../../media/bar-bending/still-01-rig-1600.webp" data-lightbox data-caption="Archival photo of the bar-bending training rig." data-alt="A white bar-bending training rig with a mounted touchscreen, standing beside an information poster in a training room.">
+              <a class="gallery-link" href="../../media/bar-bending/still-01-rig-1600.webp" data-lightbox data-caption="The bar-bending training rig and its touchscreen." data-alt="A white bar-bending training rig with a mounted touchscreen, standing beside an information poster in a training room.">
                 <img src="../../media/bar-bending/still-01-rig-800.webp"
      srcset="../../media/bar-bending/still-01-rig-800.webp 800w, ../../media/bar-bending/still-01-rig-1600.webp 1600w"
      sizes="(min-width: 1100px) 360px, (min-width: 700px) 45vw, 100vw" width="1600" height="900" alt="A white bar-bending training rig with a mounted touchscreen, standing beside an information poster in a training room."
 loading="lazy" decoding="async">
               </a>
-              <figcaption>Archival photo of the bar-bending training rig.</figcaption>
+              <figcaption>The bar-bending training rig and its touchscreen.</figcaption>
             </figure>
           </li>
           <li>
             <figure>
-              <a class="gallery-link" href="../../media/bar-bending/still-02-rig-in-use-1600.webp" data-lightbox data-caption="Archival photo of the rig in use (demonstrator shown is not the developer)." data-alt="A person in a hard hat and high-visibility vest operates the rig while the touchscreen shows the simulation.">
+              <a class="gallery-link" href="../../media/bar-bending/still-02-rig-in-use-1600.webp" data-lightbox data-caption="The rig in use during an earlier on-site demonstration." data-alt="A person in a hard hat and high-visibility vest operates the rig while the touchscreen shows the simulation.">
                 <img src="../../media/bar-bending/still-02-rig-in-use-800.webp"
      srcset="../../media/bar-bending/still-02-rig-in-use-800.webp 800w, ../../media/bar-bending/still-02-rig-in-use-1600.webp 1600w"
      sizes="(min-width: 1100px) 360px, (min-width: 700px) 45vw, 100vw" width="1600" height="900" alt="A person in a hard hat and high-visibility vest operates the rig while the touchscreen shows the simulation."
 loading="lazy" decoding="async">
               </a>
-              <figcaption>Archival photo of the rig in use (demonstrator shown is not the developer).</figcaption>
+              <figcaption>The rig in use during an earlier on-site demonstration.</figcaption>
             </figure>
           </li>
           <li>
             <figure>
-              <a class="gallery-link" href="../../media/bar-bending/still-03-rod-handling-1600.webp" data-lightbox data-caption="Archival photo: working the physical rod on the rig." data-alt="Side view of a person in safety gear holding the rig&#39;s metal rod beside the tilted touchscreen.">
+              <a class="gallery-link" href="../../media/bar-bending/still-03-rod-handling-1600.webp" data-lightbox data-caption="Working the physical rod on the rig." data-alt="Side view of a person in safety gear holding the rig&#39;s metal rod beside the tilted touchscreen.">
                 <img src="../../media/bar-bending/still-03-rod-handling-800.webp"
      srcset="../../media/bar-bending/still-03-rod-handling-800.webp 800w, ../../media/bar-bending/still-03-rod-handling-1600.webp 1600w"
      sizes="(min-width: 1100px) 360px, (min-width: 700px) 45vw, 100vw" width="1600" height="900" alt="Side view of a person in safety gear holding the rig&#39;s metal rod beside the tilted touchscreen."
 loading="lazy" decoding="async">
               </a>
-              <figcaption>Archival photo: working the physical rod on the rig.</figcaption>
+              <figcaption>Working the physical rod on the rig.</figcaption>
             </figure>
           </li>
           <li>
             <figure>
-              <a class="gallery-link" href="../../media/bar-bending/still-04-live-bend-angle-1600.webp" data-lightbox data-caption="Archival on-site video frame: the bend guide with the live angle indicator." data-alt="Photo of a monitor showing a top-down bend guide with a green arc indicator, a &#39;Bend the bar 90 degrees&#39; instruction and a prompt to press a button on the device.">
+              <a class="gallery-link" href="../../media/bar-bending/still-04-live-bend-angle-1600.webp" data-lightbox data-caption="On-site video frame: the bend guide with the live angle indicator." data-alt="Photo of a monitor showing a top-down bend guide with a green arc indicator, a &#39;Bend the bar 90 degrees&#39; instruction and a prompt to press a button on the device.">
                 <img src="../../media/bar-bending/still-04-live-bend-angle-800.webp"
      srcset="../../media/bar-bending/still-04-live-bend-angle-800.webp 800w, ../../media/bar-bending/still-04-live-bend-angle-1600.webp 1600w"
      sizes="(min-width: 1100px) 360px, (min-width: 700px) 45vw, 100vw" width="1600" height="900" alt="Photo of a monitor showing a top-down bend guide with a green arc indicator, a &#39;Bend the bar 90 degrees&#39; instruction and a prompt to press a button on the device."
 loading="lazy" decoding="async">
               </a>
-              <figcaption>Archival on-site video frame: the bend guide with the live angle indicator.</figcaption>
+              <figcaption>On-site video frame: the bend guide with the live angle indicator.</figcaption>
             </figure>
           </li>
           <li>
@@ -208,13 +201,13 @@ loading="lazy" decoding="async">
           </li>
           <li>
             <figure>
-              <a class="gallery-link" href="../../media/bar-bending/still-06-editor-preview-1600.webp" data-lightbox data-caption="Editor preview without the rig: the simulation waiting for rod input." data-alt="3D bending table with a rebar, a yellow arrow, a gloved hand marker, the instruction &#39;Move the bar to the first point&#39; and &#39;Bend Angle: 5&#39;.">
+              <a class="gallery-link" href="../../media/bar-bending/still-06-editor-preview-1600.webp" data-lightbox data-caption="With no rig connected, the simulation waits for rod input." data-alt="3D bending table with a rebar, a yellow arrow, a gloved hand marker, the instruction &#39;Move the bar to the first point&#39; and &#39;Bend Angle: 5&#39;.">
                 <img src="../../media/bar-bending/still-06-editor-preview-800.webp"
      srcset="../../media/bar-bending/still-06-editor-preview-800.webp 800w, ../../media/bar-bending/still-06-editor-preview-1600.webp 1600w"
      sizes="(min-width: 1100px) 360px, (min-width: 700px) 45vw, 100vw" width="1600" height="900" alt="3D bending table with a rebar, a yellow arrow, a gloved hand marker, the instruction &#39;Move the bar to the first point&#39; and &#39;Bend Angle: 5&#39;."
 loading="lazy" decoding="async">
               </a>
-              <figcaption>Editor preview without the rig: the simulation waiting for rod input.</figcaption>
+              <figcaption>With no rig connected, the simulation waits for rod input.</figcaption>
             </figure>
           </li>
         </ul>

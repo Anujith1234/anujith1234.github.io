@@ -68,7 +68,7 @@
       </div>
       <figcaption>
         <span class="meta">Overview video</span>
-        Unreal Editor capture on a checkerboard test map. The video is silent. Captions are on by default.        <details class="video-desc">
+        Interaction and driving prototype: carrying objects, boarding the bus and driving it on a test map. The video is silent. Captions are on by default.        <details class="video-desc">
           <summary>What the video shows</summary>
           <p id="video-desc">41-second silent overview: a tyre highlighted with a &#39;Pick&#39; prompt, carried and dropped beside a red-and-cream bus; walking through the bus cabin; the driver&#39;s door highlighted with a &#39;Hold&#39; prompt; then the bus driving and turning on a grey checkerboard test map.</p>
         </details>
@@ -78,11 +78,10 @@
 
   <div class="wrap">
     <dl class="facts">
-      <div><dt>My role</dt><dd>Developer, one of three. I built most of the prototype in C++ and Blueprints.</dd></div>
+      <div><dt>My role</dt><dd>Developer: first-person character, interaction framework, HUD routing and the walk-to-drive hand-off, in C++ and Blueprints.</dd></div>
       <div><dt>Team</dt><dd>5 people: three developers (including me), a UI/UX designer and a 3D modeller</dd></div>
       <div><dt>Organisation</dt><dd>RoA Interactive (independent development team)</dd></div>
-<div><dt>Year</dt><dd>2025–2026</dd></div>      <div><dt>Status</dt><dd>Paused prototype</dd></div>
-      <div><dt>Engine</dt><dd>Unreal Engine 5 · C++ and Blueprints</dd></div>
+<div><dt>Year</dt><dd>2025–2026</dd></div><div><dt>Status</dt><dd>Paused prototype</dd></div>      <div><dt>Engine</dt><dd>Unreal Engine 5 · C++ and Blueprints</dd></div>
       <div><dt>Platform</dt><dd>PC (prototype)</dd></div>
       <div><dt>Built with</dt><dd><ul class="tags"><li>Unreal C++</li><li>Blueprints</li><li>Enhanced Input</li><li>Chaos Vehicles</li><li>Custom-depth outlines</li><li>UMG</li></ul></dd></div>
     </dl>
@@ -92,7 +91,7 @@
     <details class="toc-mobile">
       <summary>On this page</summary>
       <ol>
-<li><a href="#the-experience">The experience</a></li><li><a href="#my-work">My work</a></li><li><a href="#how-it-works">How it works</a></li><li><a href="#decisions-that-shaped-it">Decisions that shaped it</a></li><li><a href="#next-steps">Next steps</a></li><li><a href="#gallery">Screens</a></li>      </ol>
+<li><a href="#the-experience">The experience</a></li><li><a href="#my-work">My work</a></li><li><a href="#how-it-works">How it works</a></li><li><a href="#decisions-that-shaped-it">Decisions that shaped it</a></li><li><a href="#gallery">Screens</a></li>      </ol>
     </details>
   </div>
 
@@ -101,16 +100,16 @@
       <nav class="toc" aria-label="On this page">
         <p class="meta">On this page</p>
         <ol>
-<li><a href="#the-experience">The experience</a></li><li><a href="#my-work">My work</a></li><li><a href="#how-it-works">How it works</a></li><li><a href="#decisions-that-shaped-it">Decisions that shaped it</a></li><li><a href="#next-steps">Next steps</a></li><li><a href="#gallery">Screens</a></li>        </ol>
+<li><a href="#the-experience">The experience</a></li><li><a href="#my-work">My work</a></li><li><a href="#how-it-works">How it works</a></li><li><a href="#decisions-that-shaped-it">Decisions that shaped it</a></li><li><a href="#gallery">Screens</a></li>        </ol>
       </nav>
     </aside>
 
     <div class="prose">
       <h2 id="the-experience">The experience</h2>
-<p>On foot, the player looks around in first person. Anything they can use is outlined when they look at it, and a small panel shows its name, a short description and the action, "Pick", "Drop" or "Hold". Holding the interact key fills a radial meter for two seconds before the action happens, so nothing is triggered by accident. A tyre can be picked up, carried in front of the camera and dropped again. Holding on the bus's driver's door opens it and puts the player in the driver's seat, and from there the bus can be driven and steered with a chase camera.</p>
-<p>That is the whole loop in this build, captured on a test map. The game was planned around missions, but development was paused so the team could focus on Move Your Butt, and missions, routes and finished environments were never built. I present it as what it is: a prototype of the interaction and driving foundations.</p>
+<p>On foot, the player looks around in first person. Anything they can use is outlined when they look at it, and a small panel shows its name, a short description and the action, "Pick", "Drop" or "Hold". Holding the interact key fills a radial meter for two seconds before the action happens, which makes accidental activation unlikely. A tyre can be picked up, carried in front of the camera and dropped again. Holding on the bus's driver's door opens it and puts the player in the driver's seat, and from there the bus can be driven and steered with a chase camera.</p>
+<p>This build covers that core loop on a test map: the interaction and driving foundations for a mission-based game.</p>
 <h2 id="my-work">My work</h2>
-<p>I was one of three developers on Madan at RoA Interactive, alongside a UI/UX designer and a 3D modeller, and I built most of the prototype. In C++ that is the first-person character, the interaction trace and interactable classes, HUD routing and the mission data types. In Blueprints it is the input wiring, the bus setup and the door sequence that hands control from walking to driving.</p>
+<p>I worked on Madan at RoA Interactive with two other developers, a UI/UX designer and a 3D modeller. In C++ I built the first-person character, the interaction trace and interactable classes, HUD routing and the mission data types. In Blueprints I built the input wiring, the bus setup and the door sequence that hands control from walking to driving.</p>
 <p>The goal at this stage was a solid foundation rather than content: a small interaction contract that any new object could implement, deliberate hold-to-interact input, and a clean hand-off from walking to driving. Development paused in mid-2026 so the team could put its time into Move Your Butt.</p>
 <h2 id="how-it-works">How it works</h2>
 <figure class="diagram">
@@ -130,14 +129,8 @@
 <h2 id="decisions-that-shaped-it">Decisions that shaped it</h2>
 <p><strong>One small interaction contract.</strong> Every usable object answers the same questions (name, description, action word, what happens on completion), and the HUD only talks to that base class. Adding a new object type is a subclass and a Blueprint, not a change to the player.</p>
 <p><strong>Hold instead of press.</strong> A two-second hold with visible progress makes interactions deliberate in a game where the same key could pick up a part or start driving.</p>
-<p><strong>Data assets for missions.</strong> Mission definitions were set up as primary data assets so designers could author them without code. The prototype stopped before missions were built on top of this.</p>
-<h2 id="next-steps">Next steps</h2>
-<p>Development is paused. When it resumes, the priorities are:</p>
-<ul>
-<li><strong>Complete the loop.</strong> Add a way to leave the bus, fill in the bus HUD and build the first mission on the existing mission data types.</li>
-<li><strong>Improve robustness.</strong> Add null checks on the HUD and camera paths, and move interaction state fully into the player component so items only report what happened.</li>
-<li><strong>Tune the handling.</strong> Adjust the bus steering and torque curves through play.</li>
-</ul>
+<p><strong>Data assets for missions.</strong> Mission definitions are set up as primary data assets, so designers can author them without code.</p>
+<div id="next-steps"></div>
 
       <section class="gallery" aria-labelledby="gallery">
         <h2 id="gallery">Screens</h2>

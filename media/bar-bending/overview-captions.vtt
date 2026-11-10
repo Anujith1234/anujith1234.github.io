@@ -3,15 +3,15 @@ WEBVTT
 title
 00:00:00.250 --> 00:00:03.600
 Bar Bending Simulator
-Hardware-linked training simulator · Unity · archival on-site and Editor captures
+Hardware-linked training simulator · Unity · rig demonstration and software walkthrough
 
 1
 00:00:03.750 --> 00:00:06.950
-Archival photo of the training rig and its touchscreen.
+The training rig and its touchscreen.
 
 2
 00:00:07.050 --> 00:00:19.600
-Archival on-site video: the rod is worked on the physical rig while the guide shows the target and the live bend angle read from it.
+Earlier on-site demonstration: the rod is worked on the physical rig while the guide shows the target and the live bend angle read from it.
 
 3
 00:00:19.800 --> 00:00:21.500
@@ -27,7 +27,7 @@ Results list the expected and achieved angle for each bend.
 
 6
 00:00:37.100 --> 00:00:38.900
-Current software, recorded in the Unity Editor without the rig.
+The current simulator interface.
 
 7
 00:00:39.100 --> 00:00:47.800
@@ -43,5 +43,5 @@ A trainee trial compared with an expert trial.
 
 10
 00:00:56.800 --> 00:01:01.600
-Editor preview without the rig: the simulation is waiting for rod input.
+With no rig connected, the simulation waits for rod input.
 

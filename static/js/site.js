@@ -27,28 +27,57 @@
     d.addEventListener('click', (e) => { if (e.target.closest('a')) d.open = false; });
   });
 
-  // Video: if the sources can't be loaded, show an honest unavailable state over the poster
+  // Video: only a genuine failure shows the notice, which offers a retry and the file itself.
+  // While the browser is still choosing a source, networkState can briefly read NO_SOURCE and a
+  // source that doesn't match the screen width fires 'error'; neither of those is a failure.
   document.querySelectorAll('.video-frame video').forEach((video) => {
+    const frame = video.closest('.video-frame');
     const sources = [...video.querySelectorAll('source')];
-    let shown = false;
+    const fallback = sources[sources.length - 1];
+    let note = null;
+
+    const recover = () => {
+      if (!note) return;
+      note.remove();
+      note = null;
+      video.removeAttribute('aria-hidden');
+    };
     const fail = () => {
-      if (shown) return;
-      shown = true;
-      const frame = video.closest('.video-frame');
-      const note = document.createElement('p');
+      if (note) return;
+      note = document.createElement('div');
       note.className = 'video-unavailable';
       note.setAttribute('role', 'status');
-      note.innerHTML = '<strong>Video unavailable</strong><span>The video couldn’t be loaded here. The description below explains what it shows.</span>';
-      video.removeAttribute('controls');
+      note.innerHTML = '<strong>The video didn’t load</strong>'
+        + '<span>Try again, or open the video file directly. The description below explains what it shows.</span>'
+        + '<span class="video-unavailable-actions"><button type="button" class="video-retry">Try again</button>'
+        + (fallback ? ` <a class="video-direct" href="${fallback.getAttribute('src')}">Open video file</a>` : '')
+        + '</span>';
+      note.querySelector('.video-retry').addEventListener('click', () => {
+        recover();
+        video.load();
+        const played = video.play();
+        if (played && played.catch) played.catch(() => {});
+        video.focus();
+      });
       video.setAttribute('aria-hidden', 'true');
       frame.appendChild(note);
       const details = frame.parentElement.querySelector('.video-desc');
       if (details) details.open = true;
     };
-    const last = sources[sources.length - 1];
-    if (last) last.addEventListener('error', fail);
-    video.addEventListener('error', fail);
-    if (video.networkState === HTMLMediaElement.NETWORK_NO_SOURCE) fail();
+    // Every candidate failed: the browser reports no source once the last one errors.
+    const checkExhausted = () => setTimeout(() => {
+      if (video.networkState === HTMLMediaElement.NETWORK_NO_SOURCE && video.readyState === HTMLMediaElement.HAVE_NOTHING) fail();
+    }, 0);
+    if (fallback) fallback.addEventListener('error', checkExhausted);
+    // A loading or playback error on the chosen file (network drop, decode failure).
+    video.addEventListener('error', () => { if (video.error) fail(); });
+    // Any sign that media is arriving clears the notice.
+    ['loadedmetadata', 'canplay', 'playing'].forEach((type) => video.addEventListener(type, recover));
+    // Sources rejected before this script ran: re-check once the page has settled.
+    const settle = () => setTimeout(() => {
+      if (video.networkState === HTMLMediaElement.NETWORK_NO_SOURCE && video.readyState === HTMLMediaElement.HAVE_NOTHING) fail();
+    }, 1500);
+    if (document.readyState === 'complete') settle(); else window.addEventListener('load', settle, { once: true });
   });
 
   // Header border once the page scrolls

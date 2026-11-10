@@ -68,7 +68,7 @@
       </div>
       <figcaption>
         <span class="meta">Overview video</span>
-        Unity Editor capture: one player against a bot-filled team. Captions are on by default.        <details class="video-desc">
+        Gameplay overview: wall creation, movement and a full match, with bots filling the other seats. Captions are on by default.        <details class="video-desc">
           <summary>What the video shows</summary>
           <p id="video-desc">66-second gameplay overview: a balloon-animal character poses and pushes into a checkered wall to carve a shape, then passes through an opening carved by the other team, avoids cannon volleys and collects food cans; ends on the 20-round result screen.</p>
         </details>
@@ -78,11 +78,10 @@
 
   <div class="wrap">
     <dl class="facts">
-      <div><dt>My role</dt><dd>Developer, one of two. I built most of the game&#39;s systems across gameplay, networking, bots and tools.</dd></div>
+      <div><dt>My role</dt><dd>Developer: round loop and match flow, wall carving and scoring, food and fuel, cannons, bots, and online services.</dd></div>
       <div><dt>Team</dt><dd>4 people: two developers (including me), a UI/UX designer and a 3D modeller</dd></div>
       <div><dt>Organisation</dt><dd>RoA Interactive (independent development team)</dd></div>
-<div><dt>Year</dt><dd>2026</dd></div>      <div><dt>Status</dt><dd>In development</dd></div>
-      <div><dt>Engine</dt><dd>Unity 6 (URP) · C#</dd></div>
+<div><dt>Year</dt><dd>2026</dd></div><div><dt>Status</dt><dd>In development</dd></div>      <div><dt>Engine</dt><dd>Unity 6 (URP) · C#</dd></div>
       <div><dt>Platform</dt><dd>PC, online multiplayer</dd></div>
       <div><dt>Built with</dt><dd><ul class="tags"><li>Photon Fusion 2 (shared mode)</li><li>Unity Gaming Services</li><li>Vivox</li><li>DOTween</li><li>UniTask</li><li>Addressables</li></ul></dd></div>
     </dl>
@@ -92,7 +91,7 @@
     <details class="toc-mobile">
       <summary>On this page</summary>
       <ol>
-<li><a href="#the-experience">The experience</a></li><li><a href="#my-work">My work</a></li><li><a href="#how-it-works">How it works</a></li><li><a href="#decisions-that-shaped-it">Decisions that shaped it</a></li><li><a href="#next-steps">Next steps</a></li><li><a href="#gallery">Screens</a></li>      </ol>
+<li><a href="#the-experience">The experience</a></li><li><a href="#my-work">My work</a></li><li><a href="#how-it-works">How it works</a></li><li><a href="#decisions-that-shaped-it">Decisions that shaped it</a></li><li><a href="#gallery">Screens</a></li>      </ol>
     </details>
   </div>
 
@@ -101,7 +100,7 @@
       <nav class="toc" aria-label="On this page">
         <p class="meta">On this page</p>
         <ol>
-<li><a href="#the-experience">The experience</a></li><li><a href="#my-work">My work</a></li><li><a href="#how-it-works">How it works</a></li><li><a href="#decisions-that-shaped-it">Decisions that shaped it</a></li><li><a href="#next-steps">Next steps</a></li><li><a href="#gallery">Screens</a></li>        </ol>
+<li><a href="#the-experience">The experience</a></li><li><a href="#my-work">My work</a></li><li><a href="#how-it-works">How it works</a></li><li><a href="#decisions-that-shaped-it">Decisions that shaped it</a></li><li><a href="#gallery">Screens</a></li>        </ol>
       </nav>
     </aside>
 
@@ -111,7 +110,7 @@
 <p>A match is twenty rounds, and the wall speeds up from 0.6× to 2.5× of its base speed along the way. Teams can be one to four players a side; empty seats are filled by bots, which is what the capture above shows.</p>
 <p>Two layers sit on top of the core loop. Each round, food cans land on every team's mat; eating one refuels the jump meter, which pays for launches and for holding jump in the air. From round three, cannons lob shells at the passing team while the wall approaches: a ring warns where each shell will land, a blast shoves the player off position, and ice freezes them in place so they can't change pose.</p>
 <h2 id="my-work">My work</h2>
-<p>I'm one of the two developers on Move Your Butt at RoA Interactive, working with a UI/UX designer and a 3D modeller, and I built most of the game's systems. That includes the round loop and match flow on Photon Fusion, wall carving and scoring, the jump fuel and food pickup protocol, the cannon volleys, the bot planner, and the lobby, Quick Match and party flow built on Unity Gaming Services and Vivox. I also set the pattern the codebase follows: game rules written as plain, engine-free structs behind thin networked adaptors, so editor tests run the same code the game does.</p>
+<p>I develop Move Your Butt at RoA Interactive with a second developer, a UI/UX designer and a 3D modeller. My work covers the round loop and match flow on Photon Fusion, wall carving and scoring, the jump fuel and food pickup protocol, the cannon volleys, the bot planner, and the lobby, Quick Match and party flow built on Unity Gaming Services and Vivox. I also set the pattern the codebase follows: game rules written as plain, engine-free structs behind thin networked adaptors, so editor tests run the same code the game does.</p>
 <p>Most of the engineering effort goes into making a game without a dedicated server behave fairly. That means deciding which peer is allowed to decide what, making every decision safe to receive twice, and cancelling an action rather than guessing when timing can't be trusted. The sections below show how those ideas work in the round loop, the wall, food and fuel, the cannons and the bots.</p>
 <h2 id="how-it-works">How it works</h2>
 <p>The game runs on <strong>Photon Fusion 2 in shared mode</strong>: there is no dedicated server, and each client owns its own character. Fairness comes from giving one peer the job of refereeing. The <code>RoundManager</code> object's state authority runs the round loop, and the systems that must be fair, food and cannons, live as components on that same network object so they share its authority and its tick.</p>
@@ -127,7 +126,7 @@
 </figure>
 
 <p><strong>One grid for everything.</strong> The wall is a 512×512 mask on an 18 m × 12 m quad. The same grid is the visible hole, the collision truth and the scoring domain, so what a player sees through the wall is exactly what is scored. Scores carry the match attempt, round and team they belong to, and each can be accepted only once, so a late or duplicated message cannot change a result.</p>
-<p><strong>Food as a small protocol.</strong> A can is not simply "touched". The collecting client asks for it, the round authority grants requests in roster order after checking reach, team, round and fuel, the collector adds the fuel to its own tank and reports back, and the authority either consumes the can or re-issues it under a new serial number if the player was already full. How many cans a team gets depends on the score: one more than the team size when level, one fewer when leading, two more when trailing, decided once for each pair of rounds so the uneven mid-pair score can't swing it.</p>
+<p><strong>Food as a small protocol.</strong> A can is not simply "touched". The collecting client asks for it, the round authority grants requests in roster order after checking reach, team, round and fuel, the collector adds the fuel to its own tank and reports back, and the authority either consumes the can or re-issues it under a new serial number if the player was already full. How many cans a team gets depends on the score: one can per player when leading, one extra when level, and two extra when trailing. The allocation is decided once for each pair of rounds, so the uneven mid-pair score can't swing it.</p>
 <p><strong>Cannons that respect the wall.</strong> The volley is planned from the wall's own timing. Shells land only after the creators are clear and before the wall reaches the passers, each landing spot has to be escapable on foot in the warning time, and the arc is the lowest one that clears the moving wall. If no safe arc or timing exists, the volley is cancelled rather than fired at a guess. Whether a shell hits is decided by the target's own client, consistent with shared mode.</p>
 <p><strong>Bots that plan.</strong> A bot reads its role, generates candidate poses and positions, predicts which wall cells each would carve, and scores them against what its teammates intend. It then commits to one action per tick: travel, align, face or jump. It also dodges cannon rings and fetches food when it needs fuel.</p>
 <p><strong>Rules kept out of the engine.</strong> Decision logic for jumps, fuel, food allocation and cannon schedules is written as plain structs with no Fusion types in them. The networked behaviours are thin adaptors around those rules, which lets editor tests drive the same code the game runs.</p>
@@ -135,13 +134,7 @@
 <p><strong>One referee instead of a server.</strong> Shared mode keeps hosting simple and lets anyone start a match, but it means fairness has to be designed in. Putting the round loop, food and cannons on one authority object gives a single place where grants and schedules are decided, and the attempt and serial numbers make every decision idempotent.</p>
 <p><strong>Cancel rather than cheat.</strong> Because each client runs the wall from a message, walls can start at slightly different moments on different machines. The cannon plan re-checks the real start time against its projection and drops any shell that would no longer be safe. A missing volley is better than one that passes through the wall.</p>
 <p><strong>Uneven rewards on purpose.</strong> Giving the trailing team more food is a quiet catch-up mechanic. Deciding it per pair of rounds means it reacts to the match, not to the half-finished score in the middle of a role swap.</p>
-<h2 id="next-steps">Next steps</h2>
-<ul>
-<li><strong>Run two-machine playtests.</strong> The game is built for multiple clients; the footage here is one player against a bot-filled team. Measure how closely each client's wall start matches the 0.3 s allowance the cannon planner works to.</li>
-<li><strong>Tune through play.</strong> Cannon and fuel values are first-pass numbers, set up to be adjusted in playtests.</li>
-<li><strong>Evaluate authority-side hit checks for public matchmaking.</strong> Hits are currently decided on the target's own client, which suits private matches with friends. For public matchmaking, assess moving that check to the round authority.</li>
-<li><strong>Finish the results screen.</strong> Replace the "New Text" development label visible in the footage during the next UI pass.</li>
-</ul>
+<div id="next-steps"></div>
 
       <section class="gallery" aria-labelledby="gallery">
         <h2 id="gallery">Screens</h2>

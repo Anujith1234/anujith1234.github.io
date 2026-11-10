@@ -3,7 +3,7 @@ WEBVTT
 title
 00:00:00.250 --> 00:00:03.600
 Madan: The Hope
-Vehicle-interaction prototype · Unreal Engine 5 · Editor test-map capture
+Interaction and driving prototype · Unreal Engine 5
 
 1
 00:00:03.800 --> 00:00:07.450
@@ -23,5 +23,5 @@ The driver's-door interaction switches the player into the bus.
 
 5
 00:00:21.750 --> 00:00:40.950
-Driving and turning, captured on a checkerboard test map.
+Driving and turning the bus on a test map.
 

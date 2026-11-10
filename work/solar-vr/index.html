@@ -68,7 +68,7 @@
       </div>
       <figcaption>
         <span class="meta">Overview video</span>
-        Archival recording from a VR headset session. The final segment shows a deliberately wrong battery connection, not a completed exercise. Captions are on by default.        <details class="video-desc">
+        VR gameplay recorded on a headset with an earlier build: safety preparation, electrical testing, cable connections, and the feedback for an incorrect battery connection. Captions are on by default.        <details class="video-desc">
           <summary>What the video shows</summary>
           <p id="video-desc">87-second VR overview with narration: a service van and mission briefing, picking up PPE, testing rooftop panels with a clamp meter, connecting Y connectors, moving downstairs to a PCU and two batteries, multimeter checks and a series loop cable, then a wrong-polarity connection that destroys the virtual PCU with smoke, flames and a warning to repeat the step.</p>
         </details>
@@ -81,7 +81,6 @@
       <div><dt>My role</dt><dd>Sole developer.</dd></div>
       <div><dt>Team</dt><dd>Sole developer</dd></div>
       <div><dt>Organisation</dt><dd>AMMACHI Labs, Amrita Vishwa Vidyapeetham</dd></div>
-      <div><dt>Status</dt><dd>Archival capture of an earlier version</dd></div>
       <div><dt>Engine</dt><dd>Unity 2022.3 LTS · C# and Unity Visual Scripting</dd></div>
       <div><dt>Platform</dt><dd>VR headset (OpenXR, Quest Touch controllers)</dd></div>
       <div><dt>Built with</dt><dd><ul class="tags"><li>XR Interaction Toolkit</li><li>OpenXR</li><li>Unity Visual Scripting</li><li>Splines</li><li>DOTween</li><li>Timeline</li></ul></dd></div>
@@ -92,7 +91,7 @@
     <details class="toc-mobile">
       <summary>On this page</summary>
       <ol>
-<li><a href="#the-experience">The experience</a></li><li><a href="#my-work">My work</a></li><li><a href="#how-it-works">How it works</a></li><li><a href="#decisions-that-shaped-it">Decisions that shaped it</a></li><li><a href="#next-steps">Next steps</a></li><li><a href="#gallery">Screens</a></li>      </ol>
+<li><a href="#the-experience">The experience</a></li><li><a href="#my-work">My work</a></li><li><a href="#how-it-works">How it works</a></li><li><a href="#decisions-that-shaped-it">Decisions that shaped it</a></li><li><a href="#gallery">Screens</a></li>      </ol>
     </details>
   </div>
 
@@ -101,7 +100,7 @@
       <nav class="toc" aria-label="On this page">
         <p class="meta">On this page</p>
         <ol>
-<li><a href="#the-experience">The experience</a></li><li><a href="#my-work">My work</a></li><li><a href="#how-it-works">How it works</a></li><li><a href="#decisions-that-shaped-it">Decisions that shaped it</a></li><li><a href="#next-steps">Next steps</a></li><li><a href="#gallery">Screens</a></li>        </ol>
+<li><a href="#the-experience">The experience</a></li><li><a href="#my-work">My work</a></li><li><a href="#how-it-works">How it works</a></li><li><a href="#decisions-that-shaped-it">Decisions that shaped it</a></li><li><a href="#gallery">Screens</a></li>        </ol>
       </nav>
     </aside>
 
@@ -111,10 +110,10 @@
 </blockquote>
 <h2 id="the-experience">The experience</h2>
 <p>The exercise follows a technician installing a rooftop solar system. A narrator and a step panel lead the way: teleport to the service van, read the safety posters and put on each item of protective equipment by placing it on your body, take the toolbox and go up to the roof. There the learner tests each of three panels with a clamp meter, joins the panels with Y connectors, checks the combined voltage with a multimeter, and runs cables to the DC distribution box. Downstairs, they connect the AC load to the power conditioning unit (PCU), test both 12 V batteries, join them in series for 24 V, wire them to the PCU, switch it on, and finally turn on the house's switches and loads.</p>
-<p>Mistakes have consequences. Connecting the battery to the PCU the wrong way round destroys the PCU in smoke and flames, followed by a reminder that red is positive and black is negative. The learner can then restart the step: the moved cable returns to its start position and the PCU is restored. The video ends on that failure branch on purpose, to show the feedback; it is not a completed run.</p>
+<p>Mistakes have consequences. Connecting the battery to the PCU the wrong way round destroys the PCU in smoke and flames, followed by a reminder that red is positive and black is negative. The learner can then restart the step: the moved cable returns to its start position and the PCU is restored. The video ends on this branch to show the feedback.</p>
 <h2 id="my-work">My work</h2>
-<p>I was the only developer on the project at AMMACHI Labs. I built the exercise in Unity on top of the XR Interaction Toolkit's starter rig and the lab's shared manager scripts. That includes the sixteen-step Visual Scripting graph and the custom nodes it runs on, the event bus, the snap system for connectors, cables and PPE, the spline-driven cables, the multimeter and clamp-meter logic, the narration and step-panel wiring, and the wrong-connection branch with its retry. The starter rig, packages and imported assets are third-party, and I don't present them as my work.</p>
-<p>Being the only developer meant owning the whole chain: authoring the steps, making each interaction raise the right event, and debugging the cases where the order a learner does things in doesn't match the order the script expects. The limits section below includes one of those cases.</p>
+<p>I was the only developer on the project at AMMACHI Labs. I built the exercise in Unity on top of the XR Interaction Toolkit's starter rig and the lab's shared manager scripts. That includes the sixteen-step Visual Scripting graph and the custom nodes it runs on, the event bus, the snap system for connectors, cables and PPE, the spline-driven cables, the multimeter and clamp-meter logic, the narration and step-panel wiring, and the wrong-connection branch with its retry. The starter rig, packages and imported assets are third-party.</p>
+<p>Being the only developer meant owning the whole chain: authoring the steps, making each interaction raise the right event, and debugging the cases where the order a learner does things in doesn't match the order the script expects.</p>
 <h2 id="how-it-works">How it works</h2>
 <figure class="diagram">
 <ol class="flow">
@@ -134,13 +133,7 @@
 <p><strong>Teach the failure, not just the procedure.</strong> Wrong polarity is the mistake with the most expensive real consequence, so it gets its own branch with a visible result, a spoken explanation and a clean retry, rather than a disabled connector.</p>
 <p><strong>Narrated steps over free exploration.</strong> In VR, reading long text is tiring. Short narrated instructions, a step panel to re-read them, and the next target made visible keep the learner oriented without menus.</p>
 <p><strong>Static meshes when still.</strong> Most cables spend most of the time untouched, so baking them when they stop moving trades a little memory for much less per-frame work on a standalone headset.</p>
-<h2 id="next-steps">Next steps</h2>
-<ul>
-<li><strong>Resolve the final-step event mismatch.</strong> The last step listens for the event <code>lightk</code>, while the kitchen switch sends <code>lightK</code>. Match the names and verify that the closing "well done" step completes in a headset build.</li>
-<li><strong>Reconcile content with the instruments.</strong> Align instruction text, such as the expected combined panel voltage, with the authored instrument readings.</li>
-<li><strong>Make retries repeatable.</strong> Reset and verify await-node state across repeated steps and restarts.</li>
-<li><strong>Profile on a headset.</strong> Profile the standalone build and use the results to guide optimisation.</li>
-</ul>
+<div id="next-steps"></div>
 
       <section class="gallery" aria-labelledby="gallery">
         <h2 id="gallery">Screens</h2>
